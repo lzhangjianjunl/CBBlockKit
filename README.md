@@ -50,9 +50,29 @@ ONE BIG BLOCK BUILD THE INTERFACE.
 ## Example
 ![Example](http://ww1.sinaimg.cn/large/65e4f1e6gw1f74tf36espj20wq0dzjvg.jpg)
 
+## Example Code
+
 ![Example](http://ww1.sinaimg.cn/large/65e4f1e6gw1f74u45med8j20zk2534qf.jpg)
 
 ## Live Reload
 > Enable LiveReload during your development phase! 
 
+- Download [InjectionForXcode](http://injectionforxcode.johnholdsworth.com/InjectionPluginV6.4.pkg)
+
+- Install it, Restart Xcode and make sure to click `Load bundles`.
+
+- Launch it and Go to `File > Install Plugins` *(cmd+i)*
+
+Need tell our ViewController to rebuild a view after an injection occured.
+
+Add method:
+
+```
+- (void)injected;
+```
+
 ![](http://www.asqql.com/upfile/tmp/20160824/20160824235654_40327.gif)
+
+## License
+
+Released under the MIT license. See LICENSE for details.
