@@ -20,3 +20,22 @@ ONE BIG BLOCK BUILD THE INTERFACE.
 - [x] Cooperate with Masonry,code views Faster.
 - [x] Live reload, WHAT YOU SEE IS WHAT YOU GET.
 
+## Directory
+
+- Store      : Data storage .
+
+- Macros.    : Common macro definition.
+
+- Network.   : Network framework.
+
+- Protocol.  : Delegate and DataSourse.
+
+- Category   : Commonly turn UI controls into block.
+
+- Controller : Auxiliary controller.
+
+## Basic usage
+
+> Creating a UITableView
+
+![UITableView](http://ww1.sinaimg.cn/large/65e4f1e6gw1f74qpwzxu7j21kw10jwob.jpg)
