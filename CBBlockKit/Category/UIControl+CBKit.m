@@ -20,37 +20,35 @@
 // THE SOFTWARE.
 
 #import "UIControl+CBKit.h"
-
-static CBActionBlock valueChangedBlock;
-
-static CBActionBlock touchUpInsideBlock;
-
-static CBActionBlock valueEditingChangedBlock;
+#import <objc/runtime.h>
 
 @implementation UIControl (CBKit)
 
 #pragma - Getter
 - (CBActionBlock)cb_touchUpInsideBlock {
-    return touchUpInsideBlock;
+    return objc_getAssociatedObject(self, @"cb_touchUpInsideBlock");;
 }
 
 - (CBActionBlock)cb_valueChangedBlock {
-    return valueChangedBlock;
+    return objc_getAssociatedObject(self, @"cb_valueChangedBlock");;
 }
 
 - (CBActionBlock)cb_valueEditingChangedBlock {
-    return valueEditingChangedBlock;
+    return objc_getAssociatedObject(self, @"cb_valueEditingChangedBlock");;
 }
 
 #pragma - Setter
 - (void)setCb_valueChangedBlock:(CBActionBlock)cb_valueChangedBlock {
-    valueChangedBlock = cb_valueChangedBlock;
+    objc_setAssociatedObject(self,
+                             @"cb_valueChangedBlock",
+                             cb_valueChangedBlock,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
     
     [self removeTarget:self
                 action:@selector(valueChanged:)
       forControlEvents:UIControlEventValueChanged];
     
-    if (valueChangedBlock) {
+    if (cb_valueChangedBlock) {
         [self addTarget:self
                  action:@selector(valueChanged:)
        forControlEvents:UIControlEventValueChanged];
@@ -58,13 +56,16 @@ static CBActionBlock valueEditingChangedBlock;
 }
 
 - (void)setCb_touchUpInsideBlock:(CBActionBlock)cb_touchUpInsideBlock {
-    touchUpInsideBlock = cb_touchUpInsideBlock;
+    objc_setAssociatedObject(self,
+                             @"cb_touchUpInsideBlock",
+                             cb_touchUpInsideBlock,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
     
     [self removeTarget:self
                 action:@selector(touchUpInside:)
       forControlEvents:UIControlEventTouchUpInside];
     
-    if (touchUpInsideBlock) {
+    if (cb_touchUpInsideBlock) {
         [self addTarget:self
                  action:@selector(touchUpInside:)
        forControlEvents:UIControlEventTouchUpInside];
@@ -72,13 +73,16 @@ static CBActionBlock valueEditingChangedBlock;
 }
 
 - (void)setCb_valueEditingChangedBlock:(CBActionBlock)cb_valueEditingChangedBlock {
-    valueEditingChangedBlock = cb_valueEditingChangedBlock;
+    objc_setAssociatedObject(self,
+                             @"cb_valueEditingChangedBlock",
+                             cb_valueEditingChangedBlock,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
     
     [self removeTarget:self
                 action:@selector(valueEditingChanged:)
       forControlEvents:UIControlEventEditingChanged];
     
-    if (valueEditingChangedBlock) {
+    if (cb_valueEditingChangedBlock) {
         [self addTarget:self
                  action:@selector(valueEditingChanged:)
        forControlEvents:UIControlEventEditingChanged];
@@ -86,20 +90,20 @@ static CBActionBlock valueEditingChangedBlock;
 }
 
 - (void)valueChanged:(id)sender {
-    if (valueChangedBlock) {
-        valueChangedBlock(self);
+    if (self.cb_valueChangedBlock) {
+        self.cb_valueChangedBlock(self);
     }
 }
 
 - (void)touchUpInside:(id)sender {
-    if (touchUpInsideBlock) {
-        touchUpInsideBlock(self);
+    if (self.cb_touchUpInsideBlock) {
+        self.cb_touchUpInsideBlock(self);
     }
 }
 
 - (void)valueEditingChanged:(id)sender {
-    if (valueEditingChangedBlock) {
-        valueEditingChangedBlock(self);
+    if (self.cb_valueEditingChangedBlock) {
+        self.cb_valueEditingChangedBlock(self);
     }
 }
 

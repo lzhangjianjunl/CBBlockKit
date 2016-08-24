@@ -21,7 +21,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIControl+CBKit.h"
-#import "CBMacros.h"
+#import "UIView+CBKit.h"
 
 @interface UIButton (CBKit)
 

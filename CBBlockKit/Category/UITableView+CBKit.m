@@ -22,16 +22,9 @@
 #import "UITableView+CBKit.h"
 #import "UIView+CBKit.h"
 
-static CBTableViewDelegate *tableViewDelegate;
-
-static CBTableViewDataSourse *tableViewDataSourse;
-
-static UITableView *tableView;
-
 @implementation UITableView (CBKit)
 
 #pragma - Methods
-
 + (instancetype)cb_makeTableViewWithStyle:(UITableViewStyle)style
                            cellIdentifier:(NSString *)cellIdentifier
                                 addToView:(UIView *)addToView
@@ -59,17 +52,21 @@ static UITableView *tableView;
                             configureCell:(void (^)(id cell, NSIndexPath *indexPath))configureCell {
     NSAssert(addToView, @"AddToView can't be nil.");
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectZero style:style];
+    NSAssert(configureCell, @"ConfigureCell block can't be nil.");
     
-    tableViewDelegate = [[CBTableViewDelegate alloc] init];
+    static CBTableViewDataSourse *tableViewDataSourse;
+    
+    static CBTableViewDelegate *tableViewDelegate;
     
     tableViewDataSourse = [[CBTableViewDataSourse alloc] initWithCellIdentifier:cellIdentifier];
-        
+
+    tableViewDelegate = [[CBTableViewDelegate alloc] init];
+
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:style];
+    
     tableViewDataSourse.realDataSourse = delegate;
     
     tableViewDelegate.realDelegate = delegate;
-    
-    NSAssert(configureCell, @"ConfigureCell block can't be nil.");
     
     tableViewDataSourse.cb_tableViewCellConfigureBlock = configureCell;
     

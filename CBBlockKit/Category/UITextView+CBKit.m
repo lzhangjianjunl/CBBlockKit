@@ -20,11 +20,6 @@
 // THE SOFTWARE.
 
 #import "UITextView+CBKit.h"
-#import "UIView+CBKit.h"
-
-static CBTextViewDelegate *textViewDelegate;
-
-static UITextView *textView;
 
 @implementation UITextView (CBKit)
 
@@ -44,7 +39,9 @@ static UITextView *textView;
                                  constraint:(void(^)(MASConstraintMaker *make))constraint {
     NSAssert(addToView, @"AddToView can't be nil");
     
-    textView = [[UITextView alloc] init];
+    UITextView *textView = [[UITextView alloc] init];
+    
+    static CBTextViewDelegate *textViewDelegate;
     
     textViewDelegate = [[CBTextViewDelegate alloc] init];
         

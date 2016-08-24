@@ -20,9 +20,6 @@
 // THE SOFTWARE.
 
 #import "UIScrollView+CBKit.h"
-#import "UIView+CBKit.h"
-
-static CBScrollViewDelegate *scrollViewDelegate;
 
 @implementation UIScrollView (CBKit)
 
@@ -43,6 +40,8 @@ static CBScrollViewDelegate *scrollViewDelegate;
     NSAssert(addToView, @"AddToView can't be nil");
 
     UIScrollView *scrollView = [[UIScrollView alloc] init];
+    
+    static CBScrollViewDelegate *scrollViewDelegate;
     
     scrollViewDelegate = [[CBScrollViewDelegate alloc] init];
         

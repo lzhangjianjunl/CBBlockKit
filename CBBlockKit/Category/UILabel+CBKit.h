@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import "CBMacros.h"
+#import "UIView+CBKit.h"
 
 @interface UILabel (CBKit)
 

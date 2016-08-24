@@ -20,9 +20,9 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "UIView+CBKit.h"
 #import "UIControl+CBKit.h"
 #import "CBTextFieldDelegate.h"
-#import "CBMacros.h"
 
 @class CBTextFieldDelegate;
 

@@ -20,9 +20,6 @@
 // THE SOFTWARE.
 
 #import "UITextField+CBKit.h"
-#import "UIView+CBKit.h"
-
-static CBTextFieldDelegate *textFieldDelegate;
 
 @implementation UITextField (CBKit)
 
@@ -47,6 +44,8 @@ static CBTextFieldDelegate *textFieldDelegate;
     NSAssert(addToView, @"AddToView can't be nil");
     
     UITextField *textField = [[UITextField alloc] init];
+    
+    static CBTextFieldDelegate *textFieldDelegate;
     
     textFieldDelegate = [[CBTextFieldDelegate alloc] init];
         

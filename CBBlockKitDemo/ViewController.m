@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CBColorMacros.h"
 #import "CBCategory.h"
 
 @interface ViewController ()<UITextFieldDelegate>
@@ -32,10 +33,6 @@
                                       f.layer.cornerRadius = 3.f;
                                       
                                       f.textColor = cb_whiteColor;
-                                      
-                                      d.cb_didBeginEditingBlock = ^(UITextField *f) {
-                                          
-                                      };
                                   } constraint:^(MASConstraintMaker *make) {
                                       make.top.equalTo(self.mas_topLayoutGuideTop).offset(5.f);
                                       
@@ -124,6 +121,12 @@
                                b.titleLabel.numberOfLines = 0;
                                
                                b.titleLabel.font = [UIFont boldSystemFontOfSize:13.f];
+                               
+                               b.cb_eventMonitor = ^(UIButton *b, NSString *signal) {
+                                   if ([signal isEqualToString:@"3333"]) {
+                                       [b setTitle:@"opp, you sent a message to me ??" forState:UIControlStateNormal];
+                                   }
+                               };
                            } constraint:^(MASConstraintMaker *make) {
                                make.top.equalTo(self.view.mas_centerY).offset(20.f);
                                
@@ -167,6 +170,12 @@
                                          m.image = [UIImage imageNamed:[NSString stringWithFormat:@"wbq_%d", tap_num]];
                                          
                                          tap_num += 1;
+                                     };
+                                     
+                                     m.cb_eventMonitor = ^(UIImageView *m, NSString *signal) {
+                                         if ([signal isEqualToString:@"4444"]) {
+                                              m.image = [UIImage imageNamed:@"wbq_100"];
+                                         }
                                      };
                                  } constraint:^(MASConstraintMaker *make) {
                                      make.top.equalTo(self.view.mas_centerY).offset(20.f);
@@ -214,7 +223,13 @@
 - (void)injected {
     NSLog(@"InjectedForXcode work well.");
     
-    [self sendSignal:@"2222" class:[UITableView class] superView:self.view];
+//    [self sendSignal:@"1111" class:[UITableView class] superView:self.view];
+
+//    [self sendSignal:@"2222" class:[UITableView class] superView:self.view];
+//
+//    [self sendSignal:@"3333" class:[UIButton class] superView:self.view];
+//
+    [self sendSignal:@"4444" class:[UIImageView class] superView:self.view];
 }
 
 - (void)didReceiveMemoryWarning {

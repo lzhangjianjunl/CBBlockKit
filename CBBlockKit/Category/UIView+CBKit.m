@@ -20,30 +20,8 @@
 // THE SOFTWARE.
 
 #import "UIView+CBKit.h"
-#import <objc/runtime.h>
-#import <objc/message.h>
 
 @implementation UIView (CBKit)
-
-static UITapGestureRecognizer *singleTap;
-
-static UITapGestureRecognizer *doubleTap;
-
-static UILongPressGestureRecognizer *longPress;
-
-static UIPanGestureRecognizer *pan;
-
-static CBGestureBlock singleTapBlock;
-
-static CBGestureBlock doubleTapBlock;
-
-static CBGestureBlock longPressBlock;
-
-static CBGestureBlock panBlock;
-
-static CBEventMonitorBlock eventMonitor;
-
-static NSString *inSignal;
 
 #pragma - Getter
 - (CGFloat)cb_originLeft {
@@ -87,27 +65,27 @@ static NSString *inSignal;
 }
 
 - (CBGestureBlock)cb_singleTapBlock {
-    return singleTapBlock;
+    return objc_getAssociatedObject(self, @"cb_singleTapBlock");;
 }
 
 - (CBGestureBlock)cb_doubleTapBlock {
-    return doubleTapBlock;
+    return objc_getAssociatedObject(self, @"cb_doubleTapBlock");;
 }
 
 - (CBGestureBlock)cb_longPressBlock {
-    return longPressBlock;
+    return objc_getAssociatedObject(self, @"cb_longPressBlock");;
 }
 
 - (CBGestureBlock)cb_panBlock {
-    return panBlock;
+    return objc_getAssociatedObject(self, @"cb_panBlock");;
 }
 
 - (CBEventMonitorBlock)cb_eventMonitor {
-    return eventMonitor;
+    return objc_getAssociatedObject(self, @"cb_eventMonitor");;
 }
 
 - (NSString *)cb_signal {
-    return inSignal;
+    return objc_getAssociatedObject(self, @"cb_signal");;
 }
 
 #pragma - Setter
@@ -172,82 +150,133 @@ static NSString *inSignal;
 }
 
 - (void)setCb_singleTapBlock:(CBGestureBlock)cb_singleTapBlock {
-    singleTapBlock = cb_singleTapBlock;
-    
-    if (!singleTap) {
-        singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                            action:@selector(singTapAction:)];
-    }
+    objc_setAssociatedObject(self,
+                             @"cb_singleTapBlock",
+                             cb_singleTapBlock,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
     
     if (cb_singleTapBlock) {
-        [self setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *singleTap = (UITapGestureRecognizer *)[self searchSpedifiedGestureWithGestureClass:[UITapGestureRecognizer class]
+                                                                                                        numOfTouch:1];
+        if (singleTap) {
+            [self addGestureRecognizer:singleTap];
+        }else {
+            singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                action:@selector(singTapAction:)];
+        }
+        [self removeGestureRecognizer:singleTap];
         
         [self addGestureRecognizer:singleTap];
     }
 }
 
 - (void)setCb_doubleTapBlock:(CBGestureBlock)cb_doubleTapBlock {
-    doubleTapBlock = cb_doubleTapBlock;
-    
-    if (!doubleTap) {
-        doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                            action:@selector(doubleTapAction:)];
-    }
-    
-    if (doubleTapBlock) {
-        [singleTap requireGestureRecognizerToFail:doubleTap];
-    }
-    
-    doubleTap.numberOfTapsRequired = 2;
-    
-    [self removeGestureRecognizer:doubleTap];
-    
+    objc_setAssociatedObject(self,
+                             @"cb_doubleTapBlock",
+                             cb_doubleTapBlock,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
+
     if (cb_doubleTapBlock) {
-        [self setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *singleTap = (UITapGestureRecognizer *)[self searchSpedifiedGestureWithGestureClass:[UITapGestureRecognizer class]
+                                                                                                        numOfTouch:1];
+        
+        UITapGestureRecognizer *doubleTap = (UITapGestureRecognizer *)[self searchSpedifiedGestureWithGestureClass:[UITapGestureRecognizer class]
+                                                                                                        numOfTouch:2];
+        if (!doubleTap) {
+            doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                action:@selector(doubleTapAction:)];
+        }
+        
+        doubleTap.numberOfTapsRequired = 2;
+        
+        if (singleTap) {
+            [singleTap requireGestureRecognizerToFail:doubleTap];
+        }
+        [self removeGestureRecognizer:doubleTap];
 
         [self addGestureRecognizer:doubleTap];
     }
 }
 
 - (void)setCb_longPressBlock:(CBGestureBlock)cb_longPressBlock {
-    longPressBlock = cb_longPressBlock;
-
-    if (!longPress) {
-        longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                                  action:@selector(longPressAction:)];
-    }
+    objc_setAssociatedObject(self,
+                             @"cb_longPressBlock",
+                             cb_longPressBlock,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
     
     if (cb_longPressBlock) {
-        [self setUserInteractionEnabled:YES];
-
+        UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)[self searchSpedifiedGestureWithGestureClass:[UILongPressGestureRecognizer class]
+                                                                                                                    numOfTouch:0];
+        if (longPress) {
+            longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                      action:@selector(longPressAction:)];
+        }
+        [self removeGestureRecognizer:longPress];
+        
         [self addGestureRecognizer:longPress];
     }
 }
 
 - (void)setCb_panBlock:(CBGestureBlock)cb_panBlock {
-    panBlock = cb_panBlock;
-    
-    if (!pan) {
-        pan = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                      action:@selector(panAction:)];
-    }
+    objc_setAssociatedObject(self,
+                             @"cb_panBlock",
+                             cb_panBlock,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
     
     if (cb_panBlock) {
-        [self setUserInteractionEnabled:YES];
+        UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)[self searchSpedifiedGestureWithGestureClass:[UIPanGestureRecognizer class] numOfTouch:0];
         
+        if (!pan) {
+            pan = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                          action:@selector(panAction:)];
+        }
+        [self removeGestureRecognizer:pan];
+
         [self addGestureRecognizer:pan];
     }
 }
 
 - (void)setCb_eventMonitor:(CBEventMonitorBlock)cb_eventMonitor {
-    eventMonitor = cb_eventMonitor;
+    objc_setAssociatedObject(self,
+                             @"cb_eventMonitor",
+                             cb_eventMonitor,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void)setCb_signal:(NSString *)cb_signal {
-    inSignal = cb_signal;
+    objc_setAssociatedObject(self,
+                             @"cb_signal",
+                             cb_signal,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
     
-    if (eventMonitor) {
-        eventMonitor(self, cb_signal);
+    if (self.cb_eventMonitor) {
+        self.cb_eventMonitor(self, cb_signal);
+    }
+}
+
+
+#pragma - Gesture Method
+- (void)singTapAction:(id)sender {
+    if (self.cb_singleTapBlock) {
+        self.cb_singleTapBlock(self);
+    }
+}
+
+- (void)doubleTapAction:(id)sender {
+    if (self.cb_doubleTapBlock) {
+        self.cb_doubleTapBlock(self);
+    }
+}
+
+- (void)longPressAction:(id)sender {
+    if (self.cb_longPressBlock) {
+        self.cb_longPressBlock(self);
+    }
+}
+
+- (void)panAction:(id)sender {
+    if (self.cb_panBlock) {
+        self.cb_panBlock(self);
     }
 }
 
@@ -269,29 +298,24 @@ static NSString *inSignal;
     }
 }
 
-#pragma - Gesture Method
-- (void)singTapAction:(id)sender {
-    if (singleTapBlock) {
-        singleTapBlock(self);
-    }
-}
-
-- (void)doubleTapAction:(id)sender {
-    if (doubleTapBlock) {
-        doubleTapBlock(self);
-    }
-}
-
-- (void)longPressAction:(id)sender {
-    if (longPressBlock) {
-        longPressBlock(self);
-    }
-}
-
-- (void)panAction:(id)sender {
-    if (panBlock) {
-        panBlock(self);
-    }
+- (UIGestureRecognizer *)searchSpedifiedGestureWithGestureClass:(Class)gestureClass
+                                                     numOfTouch:(NSInteger)numOfTouch {
+    __block UIGestureRecognizer *gestureObj;
+    
+    [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:gestureClass]) {
+            if (gestureClass == [UITapGestureRecognizer class]) {
+                if (numOfTouch) {
+                    if ([obj numberOfTouches] == numOfTouch) {
+                        gestureObj = obj;
+                    }
+                }
+            }else {
+                gestureObj = obj;
+            }
+        }
+    }];
+    return gestureObj;
 }
 
 @end

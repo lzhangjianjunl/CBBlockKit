@@ -20,9 +20,9 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "UIView+CBKit.h"
 #import "CBCollectionViewDelegate.h"
 #import "CBCollectionDataSourse.h"
-#import "CBMacros.h"
 
 @class CBCollectionViewDelegate, CBCollectionDataSourse;
 

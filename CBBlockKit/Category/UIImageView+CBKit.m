@@ -62,6 +62,8 @@
     
     imgView.clipsToBounds = YES;
     
+    imgView.userInteractionEnabled = YES;
+    
     imgView.contentMode =  UIViewContentModeScaleAspectFill;
     
     imgView.autoresizingMask = UIViewAutoresizingFlexibleHeight;

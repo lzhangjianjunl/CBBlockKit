@@ -20,6 +20,8 @@
 // THE SOFTWARE.
 
 #import "UILabel+CBKit.h"
+#import "CBCommonMacros.h"
+#import "CBColorMacros.h"
 
 @implementation UILabel (CBKit)
 

@@ -20,8 +20,8 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "UIView+CBKit.h"
 #import "CBScrollViewDelegate.h"
-#import "CBMacros.h"
 
 @class CBScrollViewDelegate;
 
