@@ -34,8 +34,9 @@ ONE BIG BLOCK BUILD THE INTERFACE.
 
 - Controller : Auxiliary controller.
 
-## Basic usage
+## Example
 
-> Creating a UITableView
+![Example](http://ww1.sinaimg.cn/large/65e4f1e6gw1f74tf36espj20wq0dzjvg.jpg)
 
-![UITableView](http://ww1.sinaimg.cn/large/65e4f1e6gw1f74qpwzxu7j21kw10jwob.jpg)
+![Example](http://ww1.sinaimg.cn/large/65e4f1e6gw1f74twcys7oj20zk2fk19n.jpg)
+
