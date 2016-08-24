@@ -71,7 +71,7 @@ Add method:
 - (void)injected;
 ```
 
-![](http://ww2.sinaimg.cn/large/7853084cgw1f75bh5p6zdg20z50i31l2.gif)
+![](http://ww2.sinaimg.cn/large/7853084cgw1f75c8bajyeg20s40ehnpg.gif)
 
 ## License
 
