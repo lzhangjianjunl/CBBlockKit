@@ -158,12 +158,11 @@
     if (cb_singleTapBlock) {
         UITapGestureRecognizer *singleTap = (UITapGestureRecognizer *)[self searchSpedifiedGestureWithGestureClass:[UITapGestureRecognizer class]
                                                                                                         numOfTouch:1];
-        if (singleTap) {
-            [self addGestureRecognizer:singleTap];
-        }else {
+        if (!singleTap) {
             singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                 action:@selector(singTapAction:)];
         }
+        
         [self removeGestureRecognizer:singleTap];
         
         [self addGestureRecognizer:singleTap];
@@ -207,7 +206,7 @@
     if (cb_longPressBlock) {
         UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)[self searchSpedifiedGestureWithGestureClass:[UILongPressGestureRecognizer class]
                                                                                                                     numOfTouch:0];
-        if (longPress) {
+        if (!longPress) {
             longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                       action:@selector(longPressAction:)];
         }
