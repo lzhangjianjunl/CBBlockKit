@@ -22,10 +22,6 @@
 #import "UICollectionView+CBKit.h"
 #import "UIView+CBKit.h"
 
-static CBCollectionViewDelegate *collectionViewDelegate;
-
-static CBCollectionDataSourse *collectionViewDataSourse;
-
 @implementation UICollectionView (CBKit)
 
 #pragma - Methods
@@ -84,6 +80,10 @@ static CBCollectionDataSourse *collectionViewDataSourse;
                                           numOfItem:(NSInteger (^)(UICollectionView *, NSInteger))numOfItem
                                       configureCell:(void (^)(id))configureCell {
     NSAssert(addToView, @"AddToView can't be nil");
+    
+    static CBCollectionViewDelegate *collectionViewDelegate;
+    
+    static CBCollectionDataSourse *collectionViewDataSourse;
 
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     

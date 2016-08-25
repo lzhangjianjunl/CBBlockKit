@@ -253,7 +253,6 @@
     }
 }
 
-
 #pragma - Gesture Method
 - (void)singTapAction:(id)sender {
     if (self.cb_singleTapBlock) {

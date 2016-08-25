@@ -24,7 +24,7 @@
 @interface CBDataStore : NSObject
 
 /**
- *  Open or crate specified databaseQueue and specified table.
+ *  Open or crate specified table.
  *
  *  @param dbName    name of the databaseQueue.
  *  @param tableName name of the table.
@@ -37,9 +37,11 @@
 /**
  *  Delete the specified table.
  *
+ *  @param dbName    name of the databaseQueue.
  *  @param tableName name of the table.
  */
-- (void)deleteTableWithName:(NSString *)tableName;
++ (void)deleteTableWithDBName:(NSString *)dbName
+                    tableName:(NSString *)tableName;
 
 /**
  *  Easy method used to store any kind of object.

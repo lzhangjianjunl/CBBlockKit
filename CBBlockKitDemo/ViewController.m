@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "CBColorMacros.h"
 #import "CBCategory.h"
+#import "CBDataStore.h"
 
 @interface ViewController ()<UITextFieldDelegate>
 

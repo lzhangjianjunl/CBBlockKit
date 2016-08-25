@@ -39,25 +39,26 @@
         
         NSAssert(tableName.length, @"String of the tableName can't be empty.");
         
-        NSString * path = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:dbName] stringByAppendingPathComponent:dbName];
+        NSString * path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]stringByAppendingPathComponent:dbName];
         
         NSLog(@"%@", path);
         
         if (_dbQueue) {
             [_dbQueue close];
         }
+        
         _dbQueue = [FMDatabaseQueue databaseQueueWithPath:path];
         
-        __block BOOL tableExit;
+        __block BOOL tableExit = NO;
         
         [_dbQueue inDatabase:^(FMDatabase *db) {
             tableExit = [db tableExists:tableName];
         }];
         
         if (!tableExit) {
-            NSString * sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (OBJECTID TEXT NOT NULL, DATA TEXT NOT NULL, SAVETIME TEXT NOT NULL, PRIMARY KEY(ID))", tableName];
+            NSString * sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (OBJECTID TEXT NOT NULL, DATA TEXT NOT NULL, SAVETIME TEXT NOT NULL, PRIMARY KEY(OBJECTID))", tableName];
             
-            __block BOOL crateTableSuccess;
+            __block BOOL crateTableSuccess = NO;
             
             [_dbQueue inDatabase:^(FMDatabase *db) {
                 crateTableSuccess = [db executeUpdate:sql];
@@ -71,14 +72,19 @@
     return self;
 }
 
-- (void)deleteTableWithName:(NSString *)tableName {
+
++ (void)deleteTableWithDBName:(NSString *)dbName
+                    tableName:(NSString *)tableName {
+
     NSAssert(tableName.length, @"String of the tableName can't be empty.");
     
     NSString * sql = [NSString stringWithFormat:@" DROP TABLE '%@' ", tableName];
     
-    __block BOOL deleteTableSuccess;
+    __block BOOL deleteTableSuccess = NO;
     
-    [_dbQueue inDatabase:^(FMDatabase *db) {
+    FMDatabaseQueue *dbQueue = [FMDatabaseQueue databaseQueueWithPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:dbName]];
+    
+    [dbQueue inDatabase:^(FMDatabase *db) {
         deleteTableSuccess = [db executeUpdate:sql];
     }];
     
@@ -116,7 +122,7 @@
     
     NSString * sql = [NSString stringWithFormat:@"REPLACE INTO %@ (OBJECTID, DATA, SAVETIME) values (?, ?, ?)", tableName];
     
-    __block BOOL saveObjectSuccess;
+    __block BOOL saveObjectSuccess = NO;
     
     [_dbQueue inDatabase:^(FMDatabase *db) {
         saveObjectSuccess = [db executeUpdate:sql, key, dataString, currentTime];
@@ -170,7 +176,7 @@
     
     NSString * sql = [NSString stringWithFormat:@"DELETE from %@ where OBJECTID = ?", tableName];
     
-    __block BOOL deleteObjectSuccess;
+    __block BOOL deleteObjectSuccess = NO;
     
     [_dbQueue inDatabase:^(FMDatabase *db) {
         deleteObjectSuccess = [db executeUpdate:sql, key];

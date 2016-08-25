@@ -48,7 +48,7 @@
     static CBTextFieldDelegate *textFieldDelegate;
     
     textFieldDelegate = [[CBTextFieldDelegate alloc] init];
-        
+    
     textField.delegate = textFieldDelegate;
     
     textFieldDelegate.realDelegate = delegate;
