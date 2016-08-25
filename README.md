@@ -20,8 +20,6 @@ ONE BIG BLOCK BUILD THE INTERFACE.
 
 - [x] Encapsulation of FMDB.
 
-- [x] Simple model transformation.
-
 - [x] Cooperate with Masonry,code views Faster.
 
 - [x] Live reload, WHAT YOU SEE IS WHAT YOU GET.
