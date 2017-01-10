@@ -1,6 +1,6 @@
 ![CBBlcokKit](http://ww4.sinaimg.cn/large/65e4f1e6gw1f74n6ilkz8j21av093ac2.jpg)
 
-<center> 更多讲解点击[此处](https://github.com/cbangchen/CBBlockKit/wiki)查看 </center>
+> 更多讲解点击[此处](https://github.com/cbangchen/CBBlockKit/wiki)查看
 
 ## Principle
 
@@ -33,5 +33,3 @@ ONE BIG BLOCK BUILD THE INTERFACE.
 ## License
 
 Released under the MIT license. See LICENSE for details.
-
-![](http://ww3.sinaimg.cn/large/7853084cgw1f75cbek3wdj20xc02dt8p.jpg)
