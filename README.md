@@ -1,4 +1,4 @@
-![CBBlcokKit](http://ww4.sinaimg.cn/large/65e4f1e6gw1f74n6ilkz8j21av093ac2.jpg)
+![](https://ww4.sinaimg.cn/large/006y8lVagw1fblm13quf6j30hi05kdg3.jpg)
 
 > 更多讲解点击[此处](https://github.com/cbangchen/CBBlockKit/wiki)查看
 
