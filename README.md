@@ -6,9 +6,9 @@
 
 ## Usage
 
-1 easy one : Draw the files into your project and there you go
+1 - easy one : Draw the files into your project and there you go
 
-2 easier one : `pod 'CBBlockKit'` and done
+2 - easier one : `pod 'CBBlockKit'` and done
 
 ## Principle
 
