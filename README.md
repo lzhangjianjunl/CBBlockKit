@@ -1,4 +1,6 @@
-![](https://ww4.sinaimg.cn/large/006y8lVagw1fblm13quf6j30hi05kdg3.jpg)
+<p align='center'>
+  <img src='https://ww4.sinaimg.cn/large/006y8lVagw1fblm13quf6j30hi05kdg3.jpg'>
+</p>
 
 > 更多讲解点击[此处](https://github.com/cbangchen/CBBlockKit/wiki)查看
 
