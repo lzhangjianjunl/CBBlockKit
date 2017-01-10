@@ -1,10 +1,8 @@
-![CBBlcokKit](http://ww4.sinaimg.cn/large/65e4f1e6gw1f74n6ilkz8j21av093ac2.jpg)
+<p align='center'>
+  <img src='https://ww4.sinaimg.cn/large/006y8lVagw1fblm13quf6j30hi05kdg3.jpg'>
+</p>
 
-![](http://ww3.sinaimg.cn/large/7853084cgw1f75cbek3wdj20xc02dt8p.jpg)
-
-# ヾ(＠⌒ー⌒＠)ノ - *A block can do a lot!* - (=￣ ρ￣=) ..zzZZ
-
->  /.>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   [详细讲解](https://github.com/cbangchen/CBBlockKit/wiki) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<./
+> 更多讲解点击[此处](https://github.com/cbangchen/CBBlockKit/wiki)查看
 
 ## Principle
 
