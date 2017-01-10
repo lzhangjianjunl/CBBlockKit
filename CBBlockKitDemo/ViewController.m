@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "CBColorMacros.h"
 #import "CBCategory.h"
-#import "CBDataStore.h"
 
 @interface ViewController ()<UITextFieldDelegate>
 
@@ -26,21 +25,15 @@
                                   addToView:self.view
                                   attribute:^(UITextField *f, CBTextFieldDelegate *d) {
                                       [f setValue:[UIFont systemFontOfSize:15.f] forKeyPath:@"_placeholderLabel.font"];
-                                      
                                       [f setValue:cb_whiteColor forKeyPath:@"_placeholderLabel.textColor"];
 
                                       f.backgroundColor = cb_darkGrayColor;
-                                      
                                       f.layer.cornerRadius = 3.f;
-                                      
                                       f.textColor = cb_whiteColor;
                                   } constraint:^(MASConstraintMaker *make) {
                                       make.top.equalTo(self.mas_topLayoutGuideTop).offset(5.f);
-                                      
                                       make.left.equalTo(self.view).offset(10.f);
-                                      
                                       make.right.equalTo(self.view).offset(-10.f);
-                                      
                                       make.height.mas_equalTo(35.f);
                                   }];
     
@@ -54,11 +47,9 @@
                                      s.cb_titleForHeaderInSectionBlock = ^NSString *(UITableView *t, NSInteger section) {
                                          return @"TableView Hearder";
                                      };
-                                     
                                      s.cb_titleForFooterInSectionBlock = ^NSString *(UITableView *t, NSInteger section) {
                                          return @"TableView Footer";
                                      };
-                                     
                                      d.cb_heightForRowBlock = ^CGFloat(UITableView *t, NSIndexPath *indexPath) {
                                          return 45.f;
                                      };
