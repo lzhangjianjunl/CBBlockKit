@@ -54,24 +54,17 @@
     
     if (cornerRadius) {
         imgView.layer.cornerRadius = cornerRadius;
-        
         imgView.layer.masksToBounds = YES;
-        
         imgView.clipsToBounds = YES;
     }
     
     imgView.clipsToBounds = YES;
-    
     imgView.userInteractionEnabled = YES;
-    
     imgView.contentMode =  UIViewContentModeScaleAspectFill;
-    
     imgView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    
     [addToView addSubview:imgView];
     
     attribute ? attribute(imgView) : NSLog(@"Attribute Block is nil.");
-    
     [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         constraint ? constraint(make) : NSLog(@"Constraint Block is nil.");
     }];

@@ -82,61 +82,43 @@
     NSAssert(addToView, @"AddToView can't be nil");
     
     static CBCollectionViewDelegate *collectionViewDelegate;
-    
     static CBCollectionDataSourse *collectionViewDataSourse;
 
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    
     layout.itemSize = itemSize;
-    
     layout.minimumInteritemSpacing = minimumInteritemSpacing;
-    
     layout.minimumLineSpacing = minimumLineSpacing;
     
     UICollectionView *collection = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     
     collectionViewDelegate = [[CBCollectionViewDelegate alloc] init];
-    
     collectionViewDelegate.realDelegate = delegate;
     
     collectionViewDataSourse = [[CBCollectionDataSourse alloc] initWithCellIdentifier:cellIdentifier];
-        
     collectionViewDataSourse.realDataSourse = delegate;
-    
     collectionViewDataSourse.cb_numberOfItemsInSectionBlock = numOfItem;
-    
     collectionViewDataSourse.cb_collectionViewCellConfigureBlock = configureCell;
     
     [collection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellIdentifier];
     
     if (isHorizontal) {
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        
         collection.showsVerticalScrollIndicator = NO;
-        
         collection.showsHorizontalScrollIndicator = YES;
     }else {
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        
         collection.showsVerticalScrollIndicator = YES;
-        
         collection.showsHorizontalScrollIndicator = NO;
     }
     
     collection.backgroundColor = [UIColor whiteColor];
-    
     collection.pagingEnabled = YES;
-    
     collection.delegate = collectionViewDelegate;
-    
     collection.dataSource = collectionViewDataSourse;
-    
     collection.showsHorizontalScrollIndicator = NO;
-    
     [addToView addSubview:collection];
     
     attribute ? attribute(collection, collectionViewDelegate, collectionViewDataSourse) : NSLog(@"Attribute Block is nil.");
-    
     [collection mas_makeConstraints:^(MASConstraintMaker *make) {
         constraint ? constraint(make) : NSLog(@"Constraint Block is nil.");
     }];

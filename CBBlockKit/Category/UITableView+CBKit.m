@@ -51,39 +51,27 @@
                              numberOfRows:(NSInteger (^)(UITableView *, NSInteger))numberOfRows
                             configureCell:(void (^)(id cell, NSIndexPath *indexPath))configureCell {
     NSAssert(addToView, @"AddToView can't be nil.");
-    
     NSAssert(configureCell, @"ConfigureCell block can't be nil.");
     
     static CBTableViewDataSourse *tableViewDataSourse;
-    
     static CBTableViewDelegate *tableViewDelegate;
     
     tableViewDataSourse = [[CBTableViewDataSourse alloc] initWithCellIdentifier:cellIdentifier];
-
     tableViewDelegate = [[CBTableViewDelegate alloc] init];
 
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:style];
-    
     tableViewDataSourse.realDataSourse = delegate;
-    
     tableViewDelegate.realDelegate = delegate;
-    
     tableViewDataSourse.cb_tableViewCellConfigureBlock = configureCell;
-    
     tableViewDataSourse.cb_numberOfRowsInSectionBlock = numberOfRows;
-    
     tableView.delegate = tableViewDelegate;
-    
     tableView.dataSource = tableViewDataSourse;
     
     UIView *footView = [[UIView alloc] initWithFrame:CGRectZero];
-    
     tableView.tableFooterView = footView;
-    
     [addToView addSubview:tableView];
     
     attribute ? attribute(tableView, tableViewDelegate, tableViewDataSourse): NSLog(@"Attribute Block is nil.");
-    
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         constraint ? constraint(make) : NSLog(@"Constraint Block is nil.");
     }];

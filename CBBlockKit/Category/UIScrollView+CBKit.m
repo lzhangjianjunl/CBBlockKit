@@ -44,21 +44,15 @@
     static CBScrollViewDelegate *scrollViewDelegate;
     
     scrollViewDelegate = [[CBScrollViewDelegate alloc] init];
-        
     scrollView.delegate = scrollViewDelegate;
-    
     scrollViewDelegate.realDelegate = delegate;
     
     scrollView.pagingEnabled = YES;
-    
     scrollView.showsHorizontalScrollIndicator = YES;
-    
     scrollView.showsVerticalScrollIndicator = NO;
-    
     [addToView addSubview:scrollView];
 
     attribute ? attribute(scrollView, scrollViewDelegate) : NSLog(@"Attribute Block is nil.");
-
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         constraint ? constraint(make) : NSLog(@"Constraint Block is nil.");
     }];

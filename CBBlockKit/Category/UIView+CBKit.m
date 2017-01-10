@@ -164,7 +164,6 @@
         }
         
         [self removeGestureRecognizer:singleTap];
-        
         [self addGestureRecognizer:singleTap];
     }
 }
@@ -178,7 +177,6 @@
     if (cb_doubleTapBlock) {
         UITapGestureRecognizer *singleTap = (UITapGestureRecognizer *)[self searchSpedifiedGestureWithGestureClass:[UITapGestureRecognizer class]
                                                                                                         numOfTouch:1];
-        
         UITapGestureRecognizer *doubleTap = (UITapGestureRecognizer *)[self searchSpedifiedGestureWithGestureClass:[UITapGestureRecognizer class]
                                                                                                         numOfTouch:2];
         if (!doubleTap) {
@@ -191,8 +189,8 @@
         if (singleTap) {
             [singleTap requireGestureRecognizerToFail:doubleTap];
         }
+        
         [self removeGestureRecognizer:doubleTap];
-
         [self addGestureRecognizer:doubleTap];
     }
 }
@@ -282,7 +280,6 @@
 - (UIViewController *)cb_viewController {
     for (UIView *view = self; view; view = view.superview) {
         UIResponder *nextResponder = [view nextResponder];
-        
         if ([nextResponder isKindOfClass:[UIViewController class]]) {
             return (UIViewController *)nextResponder;
         }
@@ -299,7 +296,6 @@
 - (UIGestureRecognizer *)searchSpedifiedGestureWithGestureClass:(Class)gestureClass
                                                      numOfTouch:(NSInteger)numOfTouch {
     __block UIGestureRecognizer *gestureObj;
-    
     [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:gestureClass]) {
             if (gestureClass == [UITapGestureRecognizer class]) {

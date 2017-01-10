@@ -49,9 +49,7 @@
     NSAssert(addToView, @"AddToView can't be nil");
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     button.titleLabel.font = cb_systemFontWithSize(15.f);
-        
     button.cb_touchUpInsideBlock = touchUpInside;
     
     if (title.length) {
@@ -69,7 +67,6 @@
     [addToView addSubview:button];
     
     attribute ? attribute(button) : NSLog(@"Attribute Block is nil.");
-    
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         constraint ? constraint(make) : nil;
     }];

@@ -40,19 +40,14 @@
     NSAssert(addToView, @"AddToView can't be nil");
     
     UITextView *textView = [[UITextView alloc] init];
-    
     static CBTextViewDelegate *textViewDelegate;
     
     textViewDelegate = [[CBTextViewDelegate alloc] init];
-        
     textView.delegate = textViewDelegate;
-    
     textViewDelegate.realDelegate = delegate;
-    
     [addToView addSubview:textView];
     
     attribute ? attribute(textView, textViewDelegate) : NSLog(@"Attribute Block is nil.");
-    
     [textView mas_makeConstraints:^(MASConstraintMaker *make) {
         constraint ? constraint(make) : NSLog(@"Constraint Block is nil.");
     }];

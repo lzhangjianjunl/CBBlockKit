@@ -86,7 +86,6 @@
 		2C8522011D6C457E00CC80B2 /* UIView+CBKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CBKit.m"; sourceTree = "<group>"; };
 		2C8522031D6C457E00CC80B2 /* CBBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBaseViewController.h; sourceTree = "<group>"; };
 		2C8522041D6C457E00CC80B2 /* CBBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBaseViewController.m; sourceTree = "<group>"; };
-		2C85220E1D6C457E00CC80B2 /* CBColorMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBColorMacros.h; sourceTree = "<group>"; };
 		2C85220F1D6C457E00CC80B2 /* CBCommonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBCommonMacros.h; sourceTree = "<group>"; };
 		2C8522161D6C457E00CC80B2 /* CBCollectionDataSourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBCollectionDataSourse.h; sourceTree = "<group>"; };
 		2C8522171D6C457E00CC80B2 /* CBCollectionDataSourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCollectionDataSourse.m; sourceTree = "<group>"; };
@@ -102,7 +101,6 @@
 		2C8522221D6C457E00CC80B2 /* CBTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTextFieldDelegate.m; sourceTree = "<group>"; };
 		2C8522231D6C457E00CC80B2 /* CBTextViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTextViewDelegate.h; sourceTree = "<group>"; };
 		2C8522241D6C457E00CC80B2 /* CBTextViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTextViewDelegate.m; sourceTree = "<group>"; };
-		2C85223D1D6C45A200CC80B2 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		2C93643A1E24B90A00163396 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		2C93643B1E24B90A00163396 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		2C93643C1E24B90A00163396 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 				2C8521E51D6C457E00CC80B2 /* CBBlockKit */,
 				2C8521591D6C455300CC80B2 /* CBBlockKitDemo */,
 				2C8521581D6C455300CC80B2 /* Products */,
-				4BDBB68867FC1CD10DE9BE65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,7 +238,6 @@
 		2C85220C1D6C457E00CC80B2 /* Macros */ = {
 			isa = PBXGroup;
 			children = (
-				2C85220E1D6C457E00CC80B2 /* CBColorMacros.h */,
 				2C85220F1D6C457E00CC80B2 /* CBCommonMacros.h */,
 			);
 			path = Macros;
@@ -324,14 +320,6 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
-		4BDBB68867FC1CD10DE9BE65 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2C85223D1D6C45A200CC80B2 /* libsqlite3.0.tbd */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -358,7 +346,7 @@
 		2C85214F1D6C455300CC80B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "陈超邦";
 				TargetAttributes = {
 					2C8521561D6C455300CC80B2 = {
@@ -475,8 +463,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -521,8 +511,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

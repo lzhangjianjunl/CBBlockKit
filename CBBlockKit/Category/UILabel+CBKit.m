@@ -21,7 +21,6 @@
 
 #import "UILabel+CBKit.h"
 #import "CBCommonMacros.h"
-#import "CBColorMacros.h"
 
 @implementation UILabel (CBKit)
 
@@ -46,17 +45,12 @@
     NSAssert(addToView, @"AddToView can't be nil");
 
     UILabel *label = [[UILabel alloc] init];
-    
     label.text = text.length ? text : @"";
-    
     label.font = fontSize ? cb_systemFontWithSize(fontSize) : cb_systemFontWithSize(15.f);
-    
-    label.textColor = textColor ? textColor : cb_blackColor;
-    
+    label.textColor = textColor ? textColor : [UIColor blackColor];
     [addToView addSubview:label];
     
     attribute ? attribute(label) : NSLog(@"Attribute Block is nil.");
-    
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         constraint ? constraint(make) : NSLog(@"Constraint block is nil");
     }];

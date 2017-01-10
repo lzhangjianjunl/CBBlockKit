@@ -48,35 +48,22 @@
     static CBTextFieldDelegate *textFieldDelegate;
     
     textFieldDelegate = [[CBTextFieldDelegate alloc] init];
-    
     textField.delegate = textFieldDelegate;
-    
     textFieldDelegate.realDelegate = delegate;
     
     textField.borderStyle = UITextBorderStyleNone;
-    
     textField.leftView = [[UIView alloc] init];
-    
     textField.leftViewMode = UITextFieldViewModeAlways;
-    
     textField.leftView.backgroundColor = [UIColor clearColor];
-    
     textField.leftView.cb_sizeWidth = 8.f;
-    
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    
     textField.spellCheckingType = UITextSpellCheckingTypeNo;
-    
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    
     textField.placeholder = holder;
-    
     [addToView addSubview:textField];
     
     attribute ? attribute(textField, textFieldDelegate) : NSLog(@"Attribute Block is nil.");
-    
     [textField mas_makeConstraints:^(MASConstraintMaker *make) {
         constraint ? constraint(make) : NSLog(@"Constraint Block is nil.");
     }];

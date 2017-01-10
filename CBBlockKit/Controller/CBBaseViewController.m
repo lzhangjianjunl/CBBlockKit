@@ -32,7 +32,6 @@
     [super viewDidLoad];
     
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
 }
 
@@ -55,7 +54,6 @@
              class:(__unsafe_unretained Class)class
          superView:(UIView *)superView {
     NSAssert(signal, @"Signal can't be nil.");
-    
     NSAssert(signal, @"SuperView can't be nil.");
     
     [superView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -80,7 +78,6 @@
 - (void)presentWithNavigationToViewController:(UIViewController *)viewController
                                      animated:(BOOL)animated {
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
-    
     [self presentViewController:nav
                        animated:animated
                      completion:nil];
