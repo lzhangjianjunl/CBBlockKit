@@ -14,38 +14,26 @@ ONE BIG BLOCK BUILD THE INTERFACE.
 
 ## Function
 
-- [x] Wonderful block style.
-
-- [x] Universal macro definition.
-
-- [x] Encapsulation of AFNetworking.
-
-- [x] Encapsulation of FMDB.
-
-- [x] Cooperate with Masonry,code views Faster.
-
-- [x] Live reload, WHAT YOU SEE IS WHAT YOU GET.
+- [x] Wonderful block style.  
+- [x] Universal macro definition.  
+- [x] Encapsulation of AFNetworking.  
+- [x] Encapsulation of FMDB.  
+- [x] Cooperate with Masonry,code views Faster.  
+- [x] Live reload, WHAT YOU SEE IS WHAT YOU GET.  
 
 ## Directory
 
-- Store      : Data storage .
-
-- Macros     : Common macro definition.
-
-- Network    : Network framework.
-
-- Protocol   : Delegate and DataSourse.
-
-- Category   : Commonly turn UI controls into block.
-
-- Controller : Auxiliary controller.
+- Store      : Data storage .  
+- Macros     : Common macro definition.  
+- Network    : Network framework.  
+- Protocol   : Delegate and DataSourse.   
+- Category   : Commonly turn UI controls into block.  
+- Controller : Auxiliary controller.  
 
 ## Block Features
-- Use blocks to replace common delegates and dataSourses.
-
-- Local delegates and dataSourses still get higher priority.
-
-- Send specified signal to run the specified block.
+- Use blocks to replace common delegates and dataSourses.  
+- Local delegates and dataSourses still get higher priority.  
+- Send specified signal to run the specified block.  
 
 ## Example
 ![Example](http://ww1.sinaimg.cn/large/65e4f1e6gw1f74tf36espj20wq0dzjvg.jpg)
