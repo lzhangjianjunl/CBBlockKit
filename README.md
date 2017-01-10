@@ -4,6 +4,12 @@
 
 > 更多讲解点击[此处](https://github.com/cbangchen/CBBlockKit/wiki)查看
 
+## Usage
+
+1 easy one : Draw the files into your project and there you go
+
+2 easier one : `pod 'CBBlockKit'` and done
+
 ## Principle
 
 ```
