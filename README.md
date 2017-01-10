@@ -31,11 +31,8 @@ ONE BIG BLOCK BUILD THE INTERFACE.
 - Send specified signal to run the specified block.  
 
 ## Example
-![](http://ww1.sinaimg.cn/large/65e4f1e6gw1f74tf36espj20wq0dzjvg.jpg)
 
-## Example Code
-
-### ![](![](https://ww3.sinaimg.cn/large/006y8lVagw1fbljyq5k9cj31kw0d2qas.jpg))
+![](https://ww1.sinaimg.cn/large/006y8lVagw1fblk1obnluj31kw0f8k1e.jpg)
 
 ## License
 
