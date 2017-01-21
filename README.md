@@ -6,12 +6,12 @@
 
 ## Usage
 
-Draw the files into your project and there you go
+Draw the files into your project and there you go, haha
 
 ## Principle
 
 ```
-ONE BIG BLOCK BUILD THE INTERFACE.
+ONE BIG BLOCK BUILD EVERYTHING.
 ```
 
 ## Function
